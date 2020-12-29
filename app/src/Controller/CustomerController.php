@@ -41,7 +41,7 @@ class CustomerController extends AbstractController
 	}
 
 	/**
-	 * @Route("/api/customer/{id}", methods="GET")
+	 * @Route("/api/customers/{id}", methods="GET")
 	 */
 	public function getCustomerById(int $id): Response
 	{
@@ -61,7 +61,7 @@ class CustomerController extends AbstractController
 	}
 
 	/**
-	 * @Route("/api/customer/new", methods="POST")
+	 * @Route("/api/customer/", methods="POST")
 	 */
 	public function addCustomer(Request $request): Response
 	{
@@ -82,7 +82,7 @@ class CustomerController extends AbstractController
 	}
 
 	/**
-	 * @Route("/api/customer/edit/{id}", methods="PUT")
+	 * @Route("/api/customer/{id}", methods="PUT")
 	 */
 	public function updateCustomer(Request $request, int $id): Response
 	{
@@ -104,7 +104,7 @@ class CustomerController extends AbstractController
 	}
 
 	/**
-	 * @Route("/api/customer/remove/{id}", methods="DELETE")
+	 * @Route("/api/customer/{id}", methods="DELETE")
 	 */
 	public function deleteCustomer(int $id): Response
 	{
