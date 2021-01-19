@@ -4,19 +4,20 @@ services:
 
   php_sf:
     container_name: php_sf
+#    image: 15d55c4fd75d
     build:
       context: './php/'
-    #        dockerfile: ./php/Dockerfile
-    #    image: ea0b9db259f8
+#      dockerfile: ./php/Dockerfile
     ports:
       - "9000:9000"
     volumes:
       - ./app:/var/www/sf
+      - ./php/conf/php.ini:/usr/local/etc/php/php.ini-production
 
   mysql_sf:
     container_name: mysql_sf
-    image: mysql
-    #    image: e3fcc9e1cc04
+    #    image: mysql
+    image: e3fcc9e1cc04
     ports:
       - "3306:3306"
     volumes:
@@ -30,8 +31,8 @@ services:
 
   nginx_sf2:
     container_name: nginx_sf2
-    #    image: 8c1bfa967ebf
-    image: nginx:stable-alpine
+    image: 8c1bfa967ebf
+    #    image: nginx:stable-alpine
     ports:
       - "80:80"
     volumes:
@@ -42,8 +43,8 @@ services:
       - mysql_sf
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    #    image: 6f9550cff175
+    #    image: phpmyadmin/phpmyadmin
+    image: 6f9550cff175
     restart: always
     environment:
       PMA_HOST: mysql_sf
