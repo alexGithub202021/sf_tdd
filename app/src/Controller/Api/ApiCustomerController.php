@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Api;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Repository\CustomerRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\CustomerRepository;
 use App\Mapper\CustomerMapper;
 
 /**
- * Class CustomerController
- * @package App\Controller
+ * Class ApiCustomerController
+ * @package App\Controller\Api
+ * @Route("/api")
  */
-class CustomerController extends AbstractController
+class ApiCustomerController extends AbstractController
 {
 	private $customerRepository;
 
@@ -25,10 +27,11 @@ class CustomerController extends AbstractController
 	}
 
 	/**
-	 * @Route("/api/customers", methods="GET")
+	 * @Route("/customers", methods="GET")
 	 */
 	public function getCustomers(): Response
 	{
+		// phpinfo();
 		$customers = $this->customerRepository->findAll();
 		if (!$customers) {
 			throw new HttpException(404, "Ressource not found");
@@ -38,7 +41,7 @@ class CustomerController extends AbstractController
 	}
 
 	/**
-	 * @Route("/api/customers/{id}", methods="GET")
+	 * @Route("/customers/{id}", methods="GET")
 	 */
 	public function getCustomerById(int $id): Response
 	{
@@ -54,7 +57,7 @@ class CustomerController extends AbstractController
 	}
 
 	/**
-	 * @Route("/api/customer/", methods="POST")
+	 * @Route("/customer/", methods="POST")
 	 */
 	public function addCustomer(Request $request): Response
 	{
@@ -75,7 +78,7 @@ class CustomerController extends AbstractController
 	}
 
 	/**
-	 * @Route("/api/customer/{id}", methods="PUT")
+	 * @Route("/customer/{id}", methods="PUT")
 	 */
 	public function updateCustomer(Request $request, int $id): Response
 	{
@@ -97,7 +100,7 @@ class CustomerController extends AbstractController
 	}
 
 	/**
-	 * @Route("/api/customer/{id}", methods="DELETE")
+	 * @Route("/customer/{id}", methods="DELETE")
 	 */
 	public function deleteCustomer(int $id): Response
 	{

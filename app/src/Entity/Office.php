@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Office
  *
  * @ORM\Table(name="Office")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\OfficeRepository") 
  */
 class Office
 {

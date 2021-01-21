@@ -1,0 +1,17 @@
+h1 {
+    color: orange;
+}
+
+table {
+    border: solid 1px black;
+    width: 30%;
+}
+
+thead {
+    font-weight: bold;
+    background-color: #fff8b3;
+}
+
+tr:hover {
+    background-color: #7abaff;
+}
