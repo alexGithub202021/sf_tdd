@@ -31,8 +31,8 @@ services:
 
   nginx_sf2:
     container_name: nginx_sf2
-    image: 8c1bfa967ebf
-    #    image: nginx:stable-alpine
+    # image: 8c1bfa967ebf
+    image: nginx:stable-alpine
     ports:
       - "80:80"
     volumes:
